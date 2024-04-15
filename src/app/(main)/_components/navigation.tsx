@@ -76,8 +76,6 @@ export const Navigation = () => {
 
 		if (sidebarRef.current && navbarRef.current) {
 			sidebarRef.current.style.width = `${newWidth}px`
-			navbarRef.current.style.setProperty('left', `${newWidth}px`)
-			navbarRef.current.style.setProperty('width', `calc(100% - ${newWidth}px)`)
 		}
 	}
 
@@ -93,11 +91,6 @@ export const Navigation = () => {
 			setIsResetting(true)
 
 			sidebarRef.current.style.width = isMobile ? '100%' : '240px'
-			navbarRef.current.style.setProperty(
-				'width',
-				isMobile ? '0' : 'calc(100% - 240px)'
-			)
-			navbarRef.current.style.setProperty('left', isMobile ? '100%' : '240px')
 			setTimeout(() => setIsResetting(false), 300)
 		}
 	}
@@ -120,8 +113,6 @@ export const Navigation = () => {
 			setIsResetting(true)
 
 			sidebarRef.current.style.width = '0'
-			navbarRef.current.style.setProperty('width', '100%')
-			navbarRef.current.style.setProperty('left', '0')
 			setTimeout(() => setIsResetting(false), 300)
 		}
 	}
@@ -132,7 +123,7 @@ export const Navigation = () => {
 				className={cn(
 					'group group-sidebar h-full bg-secondary overflow-auto relative flex w-60 flex-col z-[999]',
 					isResetting && 'transition-all ease-in-out duration-300',
-					isMobile && 'w-0'
+					isMobile && 'w-0 h-0'
 				)}
 			>
 				<div
@@ -177,7 +168,7 @@ export const Navigation = () => {
 			<div
 				ref={navbarRef}
 				className={cn(
-					'absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]',
+					' w-auto dark:bg-[#1F1F1F]',
 					isResetting && 'transition-all ease-in-out duration-300',
 					isMobile && 'left-0 w-full'
 				)}

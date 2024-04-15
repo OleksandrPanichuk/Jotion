@@ -1,0 +1,19 @@
+.wrapper {
+	@apply grid ;
+	grid-template-rows: 60px auto;
+	grid-template-columns: 1fr 10fr;
+	grid-template-areas: "sidebar header" "sidebar main";
+	
+}
+
+.wrapper > aside {
+	grid-area: sidebar;
+}
+
+.wrapper >div {
+	grid-area: header;
+}
+
+.wrapper > main {
+	grid-area: main;
+}

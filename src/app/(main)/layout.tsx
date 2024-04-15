@@ -2,14 +2,18 @@
 
 import { useConvexAuth } from 'convex/react'
 import { redirect } from 'next/navigation'
+import styles from './layout.module.css'
 
 import { Spinner } from '@/components/ui'
 import { SearchCommand } from "@/components/search-command";
 
 import { Navigation } from './_components/navigation'
+import { cn } from '@/lib'
+import { useMediaQuery } from 'usehooks-ts'
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
 	const { isAuthenticated, isLoading } = useConvexAuth()
+	const isMobile = useMediaQuery('(max-width: 768px)')
 
 	if (isLoading) {
 		return (
@@ -24,9 +28,9 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 	}
 
 	return (
-		<div className="h-full flex dark:bg-[#1F1F1F]">
+		<div className={cn(!isMobile && styles.wrapper, 'dark:bg-[#1F1F1F] h-full')}>
 			<Navigation />
-			<main className="flex-1 h-full overflow-y-auto">
+			<main className={'dark:bg-[#1F1F1F]'}>
 				<SearchCommand />
 				{children}
 			</main>
