@@ -1,11 +1,13 @@
 'use client'
 
+import { useEdgeStore } from '@/lib/edgestore'
 import { BlockNoteEditor } from '@blocknote/core'
-import { BlockNoteView, useCreateBlockNote } from '@blocknote/react'
+import { BlockNoteView } from '@blocknote/mantine'
+import { useCreateBlockNote } from '@blocknote/react'
 import '@blocknote/react/style.css'
 import { useTheme } from 'next-themes'
 
-import { useEdgeStore } from '@/lib/edgestore'
+import '@blocknote/mantine/style.css'
 
 interface EditorProps {
 	onChange: (value: string) => void
